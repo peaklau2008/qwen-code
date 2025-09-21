@@ -74,7 +74,8 @@ class WebSearchToolInvocation extends BaseToolInvocation<
     }
 
     try {
-      const response = await fetch('https://api.tavily.com/search', {
+      const tavily_url = process.env['TAVILY_URL'] || 'https://api.tavily.com/search';
+      const response = await fetch(tavily_url, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
